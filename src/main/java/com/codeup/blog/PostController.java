@@ -1,5 +1,6 @@
 package com.codeup.blog;
 
+import com.sun.tracing.dtrace.ProviderAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,8 +16,13 @@ public class PostController {
     }
 
     @GetMapping("/posts/{id}")
-    public @ResponseBody String getPost(@PathVariable String id){
+    public @ResponseBody String getPost(@PathVariable long id){
         return String.format("view and individual post with id of %s", id);
+    }
+
+    @GetMapping("/posts/{id}/edit")
+    public @ResponseBody String edit(@PathVariable long id){
+        return "View the form for editing post # " + id;
     }
 
     @GetMapping("/posts/create")
