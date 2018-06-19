@@ -1,6 +1,5 @@
 package com.codeup.blog;
 
-import com.sun.tracing.dtrace.ProviderAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
