@@ -17,17 +17,13 @@ public class RollDiceController {
 
     @GetMapping("/roll-dice/{guess}")
     public String guess(@PathVariable int guess, Model model) {
-        model.addAttribute("guess", guess);
         Random rand = new Random();
         int randomNumber = rand.nextInt(6) + 1;
+        boolean match = guess == randomNumber;
+
+        model.addAttribute("guess", guess);
         model.addAttribute("roll", randomNumber);
-        String correctMessage = "Hooray! Your guess was correct!";
-        String wrongMessage = "Wrong guess! Try again!";
-        if(guess == randomNumber){
-            model.addAttribute("correct_guess", correctMessage);
-        } else {
-            model.addAttribute("wrong_guess", wrongMessage);
-        }
+        model.addAttribute("match", match);
         return "roll-dice";
     }
 }

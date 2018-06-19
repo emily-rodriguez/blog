@@ -1,5 +1,6 @@
 package com.codeup.blog;
 
+import com.codeup.blog.models.Post;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,20 +15,20 @@ import java.util.List;
 public class PostController {
 
     @GetMapping("/posts")
-    public String index(Model model){
+    public String index(Model view){
         List<Post> posts = new ArrayList<>();
         Post post1 = new Post("Post 1", "Blah blah blah");
         Post post2 = new Post("Post 2", "Blah blah blah");
         posts.add(post1);
         posts.add(post2);
-        model.addAttribute("posts", posts);
+        view.addAttribute("posts", posts);
         return "/posts/index";
     }
 
     @GetMapping("/posts/{id}")
-    public String getPost(@PathVariable long id, Model model){
+    public String getPost(@PathVariable long id, Model view){
         Post post = new Post("Post", "Here's a post");
-        model.addAttribute("post", post);
+        view.addAttribute("post", post);
         return "/posts/show";
     }
 

@@ -18,8 +18,7 @@
 
 <h2>Your guess was: <span th:text="${guess}"></span></h2>
 
-<h3 th:if="${correct_guess}"><span th:text="${correct_guess}"></span></h3>
-<h3 th:if="${wrong_guess}"><span th:text="${wrong_guess}"></span></h3>
+<h3 th:if="${match}">Hooray! You guessed correctly!</h3>
 
 </body>
 </html>

@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/partials/header :: header">
-    <meta charset="UTF-8" />
-    <title>Home</title>
-</head>
+<head th:replace="/partials/header :: header(${'Index'})"/>
 <body>
 <div th:replace="/partials/navbar :: navbar"></div>
 <div th:each="post : ${posts}">
     <h3><span th:text="${post.title}"></span></h3>
     <p><span th:text="${post.body}"></span></p>
 </div>
-<div th:replace="/partials/footer :: bootstrap"></div>
+<th:block th:replace="/partials/footer :: bootstrap"/>
 </body>
 </html>

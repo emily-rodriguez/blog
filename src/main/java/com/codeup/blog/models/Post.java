@@ -1,4 +1,4 @@
-package com.codeup.blog;
+package com.codeup.blog.models;
 
 public class Post {
     private String title;
