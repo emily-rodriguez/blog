@@ -3,10 +3,7 @@ package com.codeup.blog;
 import com.codeup.blog.models.Post;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +20,8 @@ public class PostController {
     @GetMapping("/posts")
     public String index(Model view){
         List<Post> posts = new ArrayList<>();
-        Post post1 = new Post("Post 1", "Blah blah blah");
-        Post post2 = new Post("Post 2", "Blah blah blah");
+        Post post1 = new Post(1,"Post 1", "Blah blah blah");
+        Post post2 = new Post(2, "Post 2", "Blah blah blah");
         posts.add(post1);
         posts.add(post2);
         view.addAttribute("posts", posts);
@@ -44,12 +41,21 @@ public class PostController {
     }
 
     @GetMapping("/posts/create")
-    public @ResponseBody String getCreatePost(){
-        return "view the form for creating a post";
+    public String createPostForm(Model view){
+        view.addAttribute("post", new Post());
+        return "/posts/create";
     }
 
     @PostMapping("/posts/create")
-    public @ResponseBody String createPost(){
-        return "create a new post";
+    public String createPost(
+            @RequestParam(name = "title") String title,
+            @RequestParam(name = "body") String body
+    ){
+        Post post = new Post();
+        post.setTitle(title);
+        post.setBody(body);
+        postService.save(post);
+        System.out.println(post);
+        return "redirect:/posts";
     }
 }

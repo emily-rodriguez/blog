@@ -21,6 +21,7 @@ public class PostService {
     }
 
     public Post save(Post post) {
+        post.setId(posts.size() + 1);
         post.setTitle(post.getTitle());
         post.setBody(post.getBody());
         posts.add(post);

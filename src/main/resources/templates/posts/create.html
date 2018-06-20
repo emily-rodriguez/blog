@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/partials/header :: header(${'Create Post'})"/>
+<body>
+<div th:replace="/partials/navbar :: navbar"></div>
+
+<form action="/posts/create" method="POST" th:object="${post}">
+    Title:
+    <input th:field="*{title}"/>
+    <br />
+    Description:
+    <input th:field="*{body}"/>
+    <br />
+    <input type="submit" class="btn btn-secondary"/>
+</form>
+
+<th:block th:replace="/partials/footer :: bootstrap"/>
+</body>
+</html>

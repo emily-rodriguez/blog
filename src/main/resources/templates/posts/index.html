@@ -4,8 +4,13 @@
 <body>
 <div th:replace="/partials/navbar :: navbar"></div>
 <div th:each="post : ${posts}">
-    <h3><span th:text="${post.title}"></span></h3>
-    <p><span th:text="${post.body}"></span></p>
+    <div class="card">
+        <div class="card-body">
+        <h3 class="card-title"><span th:text="${post.title}"></span></h3>
+        <p class="card-text"><span th:text="${post.body}"></span></p>
+            <a href="/posts/1/edit" class="card-link">Edit Post</a>
+        </div>
+    </div>
 </div>
 <th:block th:replace="/partials/footer :: bootstrap"/>
 </body>
