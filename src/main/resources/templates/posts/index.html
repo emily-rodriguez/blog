@@ -8,7 +8,8 @@
         <div class="card-body">
         <h3 class="card-title"><span th:text="${post.title}"></span></h3>
         <p class="card-text"><span th:text="${post.body}"></span></p>
-            <a href="/posts/1/edit" class="card-link">Edit Post</a>
+        <h5><span th:text="${post.id}"/></h5>
+            <a th:href="@{/posts/{id}/edit(id=${post.id})}" class="card-link">Edit Post</a>
         </div>
     </div>
 </div>

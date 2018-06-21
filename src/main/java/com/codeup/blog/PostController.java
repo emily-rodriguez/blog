@@ -36,8 +36,9 @@ public class PostController {
     }
 
     @GetMapping("/posts/{id}/edit")
-    public @ResponseBody String edit(@PathVariable long id){
-        return "View the form for editing post # " + id;
+    public String edit(@PathVariable long id, Model view){
+        view.addAttribute("post", postService.findOne(id));
+        return "/posts/edit";
     }
 
     @GetMapping("/posts/create")
@@ -58,4 +59,5 @@ public class PostController {
         System.out.println(post);
         return "redirect:/posts";
     }
+
 }

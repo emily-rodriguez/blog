@@ -4,15 +4,20 @@
 <body>
 <div th:replace="/partials/navbar :: navbar"></div>
 
-<form action="/posts/create" method="POST" th:object="${post}">
-    Title:
-    <input th:field="*{title}"/>
-    <br />
-    Description:
-    <input th:field="*{body}"/>
-    <br />
-    <input type="submit" class="btn btn-secondary"/>
-</form>
+<div class="container">
+    <h1 class="text-center">Create a new Post</h1>
+    <form action="/posts/create" method="POST" th:object="${post}" id="createPost">
+        <div class="form-group">
+            <label for="titleInput">Title: </label>
+            <input class="form-control" th:field="*{title}" id="titleInput"/>
+        </div>
+        <div class="form-group">
+            <label for="bodyInput">Description: </label>
+            <input class="form-control" th:field="*{body}" id="bodyInput"/>
+        </div>
+        <input type="submit" class="btn btn-primary"/>
+    </form>
+</div>
 
 <th:block th:replace="/partials/footer :: bootstrap"/>
 </body>
