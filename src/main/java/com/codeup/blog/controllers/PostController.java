@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class PostController {
 
@@ -16,14 +18,20 @@ public class PostController {
     }
 
     @GetMapping("/posts")
-    public String index(Model view){
-        view.addAttribute("posts", postService.findAll());
+    public String index(Model view, @RequestParam(name="search", required = false) String searchTerm){
+        List<Post> posts;
+        if(searchTerm == null){
+            posts = postService.findAll();
+        } else {
+            posts = postService.search(searchTerm);
+        }
+        view.addAttribute("posts", posts);
+        view.addAttribute("searchterm", searchTerm);
         return "/posts/index";
     }
 
     @GetMapping("/posts/{id}")
-    public String getPost(@PathVariable long id, Model view){
-        Post post = new Post("Post", "Here's a post");
+    public String getPost(@ModelAttribute Post post, Model view){
         view.addAttribute("post", post);
         return "/posts/show";
     }
@@ -36,7 +44,7 @@ public class PostController {
     }
 
     @PostMapping("/posts/{id}/edit")
-    public String update(@ModelAttribute Post post){
+    public String update(@PathVariable long id, @ModelAttribute Post post){
         postService.update(post);
         return "redirect:/posts";
     }
@@ -58,5 +66,7 @@ public class PostController {
         postService.delete(id);
         return "redirect:/posts";
     }
+
+
 
 }

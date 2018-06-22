@@ -4,8 +4,13 @@
 <body>
 <div th:replace="/partials/navbar :: navbar"></div>
 
-<h3><span th:text="${post.title}"></span></h3>
-<p><span th:text="${post.body}"></span></p>
+<!--<h3><span th:text="*{title}"></span></h3>-->
+<!--<p><span th:text="*{body}"></span></p>-->
+
+<div th:object="${post}">
+    <h3><span th:text="*{title}"></span></h3>
+    <p><span th:text="*{body}"></span></p>
+</div>
 
 <th:block th:replace="/partials/footer :: bootstrap"/>
 </body>

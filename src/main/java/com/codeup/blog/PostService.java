@@ -4,6 +4,8 @@ import com.codeup.blog.models.Post;
 import com.codeup.blog.repositories.PostRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PostService {
 
@@ -14,7 +16,7 @@ public class PostService {
     }
 
 
-    public Iterable<Post> findAll() {
+    public List<Post> findAll() {
         return postDao.findAll();
     }
 
@@ -33,6 +35,10 @@ public class PostService {
 
     public void update(Post post) {
         postDao.save(post);
+    }
+
+    public List<Post> search(String searchTerm){
+        return postDao.search("%" + searchTerm + "%");
     }
 
 }
