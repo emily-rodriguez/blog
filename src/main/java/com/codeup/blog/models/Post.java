@@ -15,6 +15,10 @@ public class Post {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String body;
 
+    public User getUser() {
+        return user;
+    }
+
     @ManyToOne
     @JoinColumn
     private User user;

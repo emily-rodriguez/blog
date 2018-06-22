@@ -35,8 +35,10 @@ public class PostController {
     }
 
     @GetMapping("/posts/{id}")
-    public String getPost(@ModelAttribute Post post, Model view){
+    public String getPost(@PathVariable long id, Model view){
+        Post post = postService.findOne(id);
         view.addAttribute("post", post);
+        view.addAttribute("email", post.getUser().getEmail());
         return "/posts/show";
     }
 
@@ -72,7 +74,5 @@ public class PostController {
         postService.delete(id);
         return "redirect:/posts";
     }
-
-
 
 }
