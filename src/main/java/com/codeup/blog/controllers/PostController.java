@@ -38,7 +38,6 @@ public class PostController {
     public String getPost(@PathVariable long id, Model view){
         Post post = postService.findOne(id);
         view.addAttribute("post", post);
-        view.addAttribute("email", post.getUser().getEmail());
         return "/posts/show";
     }
 
