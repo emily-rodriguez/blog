@@ -21,6 +21,7 @@ public class PostService {
     }
 
     public Post save(Post post) {
+        System.out.println(post.getUser().getId());
         postDao.save(post);
         return post;
     }
@@ -34,6 +35,7 @@ public class PostService {
     }
 
     public void update(Post post) {
+        System.out.println(post.getUser().getId());
         postDao.save(post);
     }
 

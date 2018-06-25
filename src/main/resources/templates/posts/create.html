@@ -6,7 +6,7 @@
 
 <div class="container">
     <h1 class="text-center">Create a new Post</h1>
-    <form action="/posts/create" method="POST" th:object="${post}" id="createPost">
+    <form th:action="@{/posts/create}" method="POST" th:object="${post}" id="createPost">
         <div class="form-group">
             <label for="titleInput">Title: </label>
             <input class="form-control" th:field="*{title}" id="titleInput"/>

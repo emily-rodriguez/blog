@@ -51,6 +51,8 @@ public class PostController {
 
     @PostMapping("/posts/{id}/edit")
     public String update(@PathVariable long id, @ModelAttribute Post post){
+//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        System.out.println(user.getUsername());
         postService.update(post);
         return "redirect:/posts";
     }
