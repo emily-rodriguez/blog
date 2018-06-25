@@ -27,22 +27,9 @@
             <input type="submit" class="btn btn-block btn-primary" value="Log In" />
         </div>
     </form>
-</div>
 
-<!--<div class="container">-->
-    <!--<h1 class="text-center">Create a new Post</h1>-->
-    <!--<form action="/posts/create" method="POST" th:object="${post}" id="createPost">-->
-        <!--<div class="form-group">-->
-            <!--<label for="titleInput">Title: </label>-->
-            <!--<input class="form-control" th:field="*{title}" id="titleInput"/>-->
-        <!--</div>-->
-        <!--<div class="form-group">-->
-            <!--<label for="bodyInput">Description: </label>-->
-            <!--<input class="form-control" th:field="*{body}" id="bodyInput"/>-->
-        <!--</div>-->
-        <!--<input type="submit" class="btn btn-block btn-primary"/>-->
-    <!--</form>-->
-<!--</div>-->
+    <h2>New user? Create an account <a th:href="@{/sign-up}">here.</a></h2>
+</div>
 
 <th:block th:replace="fragments :: scripts"/>
 </body>
