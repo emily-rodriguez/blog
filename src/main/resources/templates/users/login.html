@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: header(${'Login'})"/>
+<body>
+<div th:replace="fragments :: navbar"></div>
+
+<div class="container">
+
+    <h1>Log In</h1>
+    <div th:if="${param.error}">
+        Invalid Username and Password.
+    </div>
+    <div th:if="${param.logout}">
+        You have been logged out.
+    </div>
+
+    <form th:action="@{/login}" method="post">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input class="form-control" id="username" name="username" type="text" />
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input class="form-control" id="password" name="password" type="password" />
+        </div>
+        <div>
+            <input type="submit" class="btn btn-block btn-primary" value="Log In" />
+        </div>
+    </form>
+</div>
+
+<!--<div class="container">-->
+    <!--<h1 class="text-center">Create a new Post</h1>-->
+    <!--<form action="/posts/create" method="POST" th:object="${post}" id="createPost">-->
+        <!--<div class="form-group">-->
+            <!--<label for="titleInput">Title: </label>-->
+            <!--<input class="form-control" th:field="*{title}" id="titleInput"/>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+            <!--<label for="bodyInput">Description: </label>-->
+            <!--<input class="form-control" th:field="*{body}" id="bodyInput"/>-->
+        <!--</div>-->
+        <!--<input type="submit" class="btn btn-block btn-primary"/>-->
+    <!--</form>-->
+<!--</div>-->
+
+<th:block th:replace="fragments :: scripts"/>
+</body>
+</html>
