@@ -50,10 +50,8 @@ public class PostController {
     }
 
     @PostMapping("/posts/{id}/edit")
-    public String update(@PathVariable long id, @ModelAttribute Post post){
-//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        System.out.println(user.getUsername());
-        postService.update(post);
+    public String update(@ModelAttribute Post post){
+        postService.save(post);
         return "redirect:/posts";
     }
 
@@ -65,8 +63,6 @@ public class PostController {
 
     @PostMapping("/posts/create")
     public String createPost(@ModelAttribute Post post) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        post.setUser(user);
         postService.save(post);
         return "redirect:/posts";
     }
