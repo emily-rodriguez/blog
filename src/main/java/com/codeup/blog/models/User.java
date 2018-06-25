@@ -10,10 +10,10 @@ public class User {
     @GeneratedValue
     private long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String username;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
@@ -23,6 +23,13 @@ public class User {
     private List<Post> posts;
 
     public User() {};
+
+    public User(User copy){
+        id = copy.id;
+        username = copy.username;
+        email = copy.email;
+        password = copy.password;
+    }
 
     public User(String username, String email, String password) {
         this.username = username;
