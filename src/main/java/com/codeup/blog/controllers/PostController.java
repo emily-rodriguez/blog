@@ -63,7 +63,7 @@ public class PostController {
 
     @PostMapping("/posts/create")
     public String createPost(@ModelAttribute Post post) {
-        User user = userRepository.findOne(1L);
+        User user = userRepository.first();
         post.setUser(user);
         postService.save(post);
         return "redirect:/posts";
