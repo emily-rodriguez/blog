@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/partials/header :: header(${'Create Post'})"/>
+<head th:replace="fragments :: header(${'Create Post'})"/>
 <body>
-<div th:replace="/partials/navbar :: navbar"></div>
+<div th:replace="fragments :: navbar"></div>
 
 <div class="container">
     <h1 class="text-center">Create a new Post</h1>
@@ -19,6 +19,6 @@
     </form>
 </div>
 
-<th:block th:replace="/partials/footer :: bootstrap"/>
+<th:block th:replace="fragments :: scripts"/>
 </body>
 </html>

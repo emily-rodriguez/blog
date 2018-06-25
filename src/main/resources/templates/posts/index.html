@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/partials/header :: header(${'Index'})"/>
+<head th:replace="fragments :: header(${'Index'})"/>
 <body>
-<div th:replace="/partials/navbar :: navbar"></div>
+<div th:replace="fragments :: navbar"></div>
 <div class="container">
 
     <h1 th:if="${! posts.isEmpty()}">Here are all the posts!</h1>
@@ -29,6 +29,6 @@
         </div>
     </div>
 </div>
-<th:block th:replace="/partials/footer :: bootstrap"/>
+<th:block th:replace="fragments :: scripts"/>
 </body>
 </html>
