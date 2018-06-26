@@ -72,7 +72,7 @@ public class PostController {
         if(validation.hasErrors()){
             view.addAttribute("errors", validation);
             view.addAttribute("post", post);
-            return "ads/create";
+            return "posts/create";
         }
         postService.save(post);
         return "redirect:/posts";
