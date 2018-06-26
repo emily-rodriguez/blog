@@ -1,5 +1,7 @@
 package com.codeup.blog.models;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,9 +12,11 @@ public class Post {
     private long id;
 
     @Column(nullable = false)
+    @NotBlank(message ="Posts much have a title")
     private String title;
 
     @Column(nullable = false, columnDefinition = "TEXT")
+    @NotBlank(message ="Posts much have a description")
     private String body;
 
     public User getUser() {

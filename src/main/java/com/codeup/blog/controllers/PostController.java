@@ -7,8 +7,10 @@ import com.codeup.blog.repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -62,7 +64,16 @@ public class PostController {
     }
 
     @PostMapping("/posts/create")
-    public String createPost(@ModelAttribute Post post) {
+    public String createPost(
+            @Valid Post post,
+            Errors validation,
+            Model view
+    ) {
+        if(validation.hasErrors()){
+            view.addAttribute("errors", validation);
+            view.addAttribute("post", post);
+            return "ads/create";
+        }
         postService.save(post);
         return "redirect:/posts";
     }
