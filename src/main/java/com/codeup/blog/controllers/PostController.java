@@ -32,21 +32,21 @@ public class PostController {
         }
         view.addAttribute("posts", posts);
         view.addAttribute("searchterm", searchTerm);
-        return "/posts/index";
+        return "posts/index";
     }
 
     @GetMapping("/posts/{id}")
     public String getPost(@PathVariable long id, Model view){
         Post post = postService.findOne(id);
         view.addAttribute("post", post);
-        return "/posts/show";
+        return "posts/show";
     }
 
 
     @GetMapping("/posts/{id}/edit")
     public String edit(@PathVariable long id, Model view){
         view.addAttribute("post", postService.findOne(id));
-        return "/posts/edit";
+        return "posts/edit";
     }
 
     @PostMapping("/posts/{id}/edit")
@@ -58,7 +58,7 @@ public class PostController {
     @GetMapping("/posts/create")
     public String createPostForm(Model view){
         view.addAttribute("post", new Post());
-        return "/posts/create";
+        return "posts/create";
     }
 
     @PostMapping("/posts/create")
