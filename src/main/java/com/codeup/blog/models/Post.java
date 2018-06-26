@@ -12,11 +12,11 @@ public class Post {
     private long id;
 
     @Column(nullable = false)
-    @NotBlank(message ="Posts much have a title")
+    @NotBlank(message ="Posts must have a title")
     private String title;
 
     @Column(nullable = false, columnDefinition = "TEXT")
-    @NotBlank(message ="Posts much have a description")
+    @NotBlank(message ="Posts must have a description")
     private String body;
 
     public User getUser() {
