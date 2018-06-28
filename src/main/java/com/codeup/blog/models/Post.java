@@ -1,5 +1,6 @@
 package com.codeup.blog.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
@@ -26,6 +27,18 @@ public class Post {
     @ManyToOne
     @JoinColumn
     private User user;
+
+    @ManyToOne
+    @JsonManagedReference
+    private User owner;
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
 
     public void setUser(User user) {
         this.user = user;
